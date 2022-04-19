@@ -27,7 +27,9 @@ app.get('/api/notes', (req, res) => {
 app.post('/api/notes', (req, res) => {
     // add an unique id to new note
     req.body.id=uniqid();
-    const newNote= createNewNote(req.body,noteDB)
+    const newNote = req.body
+    noteDB.push(newNote)
+    fs.writeFileSync('./db/db.json', JSON.stringify(noteDB))
     res.json(noteDB)
 });
 
@@ -41,20 +43,12 @@ app.delete('/api/notes/:id', (req, res) => {
     res.json(noteDB)
 })
 
-// function to push new note and add to note database
-function createNewNote(body, noteArray){
-    const newNote = body;
-    noteArray.push(newNote) 
-    fs.writeFileSync('./db/db.json', JSON.stringify(noteDB))
-    return newNote
-};
-
 // upload html pages
 app.get('/notes', (req,res)=>{
     res.sendFile(path.join(__dirname, ("public/notes.html")));
 });
 
-// default pathway
+// wildcard pathway
 app.get('*', (req,res)=>{
     res.sendFile(path.join(__dirname, ('./public/index.html')));
 })
