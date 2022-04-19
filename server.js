@@ -14,13 +14,16 @@ const PORT = process.env.PORT || 3000;
 // set up middleware
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true}));
+app.use(express.static('public'));
 // parse incoming data to json
 app.use(express.json());
 
+// get note api
 app.get('/api/notes', (req, res) => {
     res.json(noteDB)
 })
 
+// post note api
 app.post('/api/notes', (req, res) => {
     // add an unique id to new note
     req.body.id=uniqid();
@@ -28,22 +31,35 @@ app.post('/api/notes', (req, res) => {
     res.json(noteDB)
 });
 
+// delete note api
+app.delete('/api/notes/:id', (req, res) => {
+    const id = req.params.id
+    noteDB = noteDB.filter(notes => 
+        notes.id !== id)
+    
+    fs.writeFileSync('./db/db.json', JSON.stringify(noteDB))
+    res.json(noteDB)
+})
+
 // function to push new note and add to note database
 function createNewNote(body, noteArray){
     const newNote = body;
     noteArray.push(newNote) 
-    fs.writeFileSync('./db/db.json',JSON.stringify(noteDB))
+    fs.writeFileSync('./db/db.json', JSON.stringify(noteDB))
     return newNote
 };
 
-app.get("/notes", (req, res) => {
+// upload html pages
+app.get('/notes', (req,res)=>{
     res.sendFile(path.join(__dirname, ("public/notes.html")));
 });
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, ("./public/index.html")));
-});
+// default pathway
+app.get('*', (req,res)=>{
+    res.sendFile(path.join(__dirname, ('./public/index.html')));
+})
 
+// server listener
 app.listen(PORT, () => {
     console.log(`API now on port ${PORT}!`)
 });
