@@ -27,7 +27,7 @@
   ## Usage:
   You can access the application by running "npm start" in the terminal, then going to the localhost in your browser. You can also use the deployed application with the heroku link below.
   ## Deployed Application:
-  https://josh-note-taker.herokuapp.com/
+  https://frozen-basin-60742.herokuapp.com/
   ## Screenshots:
   ![](./public/assets/images/homepage.PNG)
   ![](./public/assets/images/notes.PNG)
