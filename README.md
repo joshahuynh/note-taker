@@ -1,8 +1,22 @@
 # Note Taker
   ## User Story:
-  As a manager, I want to generate a webpage that displays my team's basic info, so that I have quick access to their emails and GitHub profiles.
+  AS A small business owner,
+  I WANT to be able to write and save notes,
+  SO THAT I can organize my thoughts and keep track of tasks I need to complete.
   ## Acceptance Criteria:
-  Given a command-line application that accepts user input, when I am prompted for my team members and their information. Then an HTML file is generated that displays a nicely formatted team roster based on user input, when I click on an email address in the HTML. Then my default email program opens and populates the TO field of the email with the address, when I click on the GitHub username. Then that GitHub profile opens in a new tab, when I start the application. Then I am prompted to enter the team manager’s name, employee ID, email address, and office number, when I enter the team manager’s name, employee ID, email address, and office number. Then I am presented with a menu with the option to add an engineer or an intern or to finish building my team, when I select the engineer option. Then I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu, when I select the intern option. Then I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu, when I decide to finish building my team. Then I exit the application, and the HTML is generated.
+  GIVEN a note-taking application,
+  WHEN I open the Note Taker,
+  THEN I am presented with a landing page with a link to a notes page.
+  WHEN I click on the link to the notes page,
+  THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and   the note’s text in the right-hand column.
+  WHEN I enter a new note title and the note’s text,
+  THEN a Save icon appears in the navigation at the top of the page.
+  WHEN I click on the Save icon,
+  THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes.
+  WHEN I click on an existing note in the list in the left-hand column,
+  THEN that note appears in the right-hand column.
+  WHEN I click on the Write icon in the navigation at the top of the page,
+  THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column.
   ## Table of Contents 
   - [Description](#description)
   - [Usage](#usage)
